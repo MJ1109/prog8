@@ -72,6 +72,7 @@ function classifyingProcess(){
         classifier.classify(video, (err, result)=>{
             if(err) console.log(err)
             console.log(result)
+            if(undefined) console.log("not loaded yet")
             label.innerHTML = result[0].label
         })
     }, 1000)
