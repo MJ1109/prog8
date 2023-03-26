@@ -67,8 +67,13 @@ function testStroke(testData, decisionTree){
     const patientWithoutLabel = Object.assign({}, testData)
     delete patientWithoutLabel.stroke
 
-    let correctPredictions=0;
+    let correctPredictions = 0;
     let totalPredictions = testData.length;
+
+    let predictedAndActualDb = 0; 
+    let predHealthyActualDb = 0;
+    let actualHealthyPredDb = 0;
+    let actualHealtyPredHealthy = 0;
 
     for (let i = 0; i < testData.length; i++) {
         let prediction = decisionTree.predict(patientWithoutLabel[i])
@@ -77,10 +82,40 @@ function testStroke(testData, decisionTree){
         if (prediction == testData[i].stroke){
             correctPredictions++
             console.log('This prediction was correct!')
+            
+            if (testData[i].stroke == 1){
+                console.log("predicted stroke & actual stroke")
+                predictedAndActualDb++
+                // document.getElementById("predAndFrDiabetes").innerHTML = `${predictedAndActualDb}`
+            }
+
+            if (testData[i].stroke == 0){
+                console.log("predicted healty and actually healthy")
+                actualHealtyPredHealthy++
+                
+            }
+
         }
         else {
             console.log('The prediction was incorrect :(')
+            
+            if(testData[i].stroke == 1){
+                console.log("predicted no stroke, but had stroke")
+                predHealthyActualDb++
+                
+            }
+
+            if(testData[i].stroke == 0){
+                console.log("predicted stroke, but had no stroke")
+                actualHealthyPredDb
+                
+            }
+
         }
+        console.log(predictedAndActualDb)
+        console.log(actualHealtyPredHealthy)
+        console.log(predHealthyActualDb)
+        console.log(actualHealthyPredDb)
     }
     let accuracy = correctPredictions/totalPredictions *100;
     accuracy = Math.round(accuracy * 100)/100 //afronden op 2 getallen achter de komma
