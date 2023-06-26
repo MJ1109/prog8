@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+    <title>Alfabet Trainer</title>
+</head>
+<body>
+    <div class=flex-container>   
+        <div class="textContainer">  
+            <h1>Alfabet Trainer</h1>
+            <p>Om te starten met leren zijn hier kort de instructies: </p>
+            <ol>
+                <li> Klik op 'Start!' en je krijgt een letter te zien</li>
+                <li> Schrijf deze letter op en laat hem zien aan de camera. </li>
+                <li>Klik op 'Controleer' en kijk hoe duidelijk je de letter hebt geschreven</li>
+                <li> Als je het goed hebt gedaan krijg je een punt. <br/>Ook zal er een plaatje met een woord startend met die letter in beeld verschijnen</li>
+                <li> Als je op de 'Nieuwe Letter' knop klikt krijg je een nieuwe letter te zien</li>
+            </ol>
+            <p> Als ie je letter niet herkent, kan je hem opnieuw schrijven en opnieuw laten controleren met de 'controleer' knop.</p>
+            <button type="button" onclick="init(), displayRandomLetterImage()" id="start">Start!</button>
+        </div>  
+
+
+        <div class="visuals-container">
+            <div id="letter-container"></div>
+            <div id="webcam-container"></div>
+        </div>
+
+        <p class="guessContainer">Geraden letter: <span id="guessContainer"></span></p>
+
+        <div id="label-container">
+            <button type="button" id="predict" onclick="predict()">Controleer</button>
+            <button type="button" id="retry" onclick="retry()">Nieuwe Letter</button>
+            <h2>Goed geschreven: <span id="score">0</span></h2>    
+        </div>   
+
+    <div class="imgContainer"></div>  
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="js/main.js"></script> 
+</body>
+</html>
